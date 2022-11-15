@@ -40,4 +40,8 @@ public class WebOperations {
     public void waitForVisibility(WebElement element) {
         this.wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void waitForInvisibility(WebElement element) {
+        this.wait.until(ExpectedConditions.invisibilityOf(element));
+    }
 }
