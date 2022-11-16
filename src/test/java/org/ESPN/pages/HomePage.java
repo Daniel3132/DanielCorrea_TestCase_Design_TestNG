@@ -51,7 +51,16 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.global-user:nth-child(2)")
     private WebElement userOptionsListMenu;
 
+
     //Deactivate User Elements
+    @FindBy(css = "div.global-user:nth-child(2) > div:nth-child(1) > ul:nth-child(1) > li:nth-child(5) > a:nth-child(1)")
+    private WebElement espnProfileLink;
+
+    @FindBy(css = ".loading-indicator.state-loading")
+    private WebElement loadingSpinner;
+
+    @FindBy(id = "AccountDeleteLink")
+    private WebElement deleteAccountLink;
 
 
     public HomePage(WebDriver driver) {
@@ -139,5 +148,21 @@ public class HomePage extends BasePage {
         super.waitForInvisibility(userOptionsListMenu);
     }
 
+    //Deactivate User methods
+    public void clickESPNProfile(){
+        super.clickElement(espnProfileLink);
+    }
+
+    public void clickDeleteAccount(){
+        super.clickElement(deleteAccountLink);
+    }
+
+    public void clickDeleteAccountConfirmation(){
+        super.clickElement(loginBtnSubmit);
+    }
+
+    public void loadingSpinnerIsOver(){
+        super.waitForInvisibility(loadingSpinner);
+    }
 
 }

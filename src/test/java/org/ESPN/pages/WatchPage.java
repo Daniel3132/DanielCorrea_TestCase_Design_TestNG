@@ -30,7 +30,7 @@ public class WatchPage extends BasePage {
     }
 
     public boolean checkElementInCard(WebElement element, String selector){
-        return element.findElement(By.cssSelector(selector)).isDisplayed() && !element.findElement(By.cssSelector(selector)).getText().equals("");
+        return !element.findElement(By.cssSelector(selector)).getText().equals("");
     }
 
     public boolean checkAllCardsTitle() {

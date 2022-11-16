@@ -10,9 +10,9 @@
     <test name="Login test">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <!--<class name="org.ESPN.tests.LoginTest"/>-->
+            <class name="org.ESPN.tests.LoginTest"/>
             <class name="org.ESPN.tests.LogoutTest"/>
-            <!--<class name="org.ESPN.tests.DeactivateUserTest"/>-->
+            <class name="org.ESPN.tests.DeactivateUserTest"/>
         </classes>
     </test>
 </suite>
