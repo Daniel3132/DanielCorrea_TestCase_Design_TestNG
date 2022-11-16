@@ -17,6 +17,10 @@ public class BaseTest {
     protected HomePage home;
     private Driver driver;
 
+    protected final String EMAIL = "utyd_qarri3@kygur.com";
+    protected final String PASSWORD = "hGWKrb7*ZU2Y,_.";
+
+
     @Parameters({"browser", "url"})
     @BeforeTest
     public void testSetup(String browser, String url) {
@@ -41,6 +45,18 @@ public class BaseTest {
         } catch (AssertionError e) {
             Reporter.error(format("Assertion Error: [%s]", e.getMessage().replaceAll("\n", "")));
         }
+    }
+
+    protected void fastLogin(){
+        home.switchToBanner();
+        home.closeBanner();
+        home.switchToHome();
+        home.openLoginModal();
+        home.switchToModal();
+        home.fillUsernameEmailInput(EMAIL);
+        home.fillPasswordInput(PASSWORD);
+        home.submitLoginForm();
+        home.switchToHome();
     }
 
 }

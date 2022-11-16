@@ -13,6 +13,7 @@ public class HomePage extends BasePage {
     @FindBy(css = ".PromoBanner__CloseBtn")
     private WebElement closeBannerBtn;
 
+
     //Login Elements
     @FindBy(id = "global-user-trigger")
     private WebElement IconUserToHover;
@@ -41,6 +42,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "ul > li.user.hover > div > div > ul.account-management > li.display-user")
     private WebElement welcomeText;
 
+
     //Logout Elements
     @FindBy(css = "li.user > div > div > ul.account-management > li:nth-child(9) > a")
     private WebElement logoutBtn;
@@ -56,13 +58,17 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.global-user:nth-child(2) > div:nth-child(1) > ul:nth-child(1) > li:nth-child(5) > a:nth-child(1)")
     private WebElement espnProfileLink;
 
-    @FindBy(css = ".loading-indicator.state-loading")
-    private WebElement loadingSpinner;
-
     @FindBy(id = "AccountDeleteLink")
     private WebElement deleteAccountLink;
 
+    @FindBy(id = "oneid-iframe")
+    private WebElement UpdateAccountModal;
 
+    @FindBy(css = ".loading-indicator")
+    private WebElement loadingSpinner;
+
+
+    //Methods
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -72,11 +78,11 @@ public class HomePage extends BasePage {
     }
 
     //Ad Banner
-    public void switchToBanner(){
+    public void switchToBanner() {
         super.getDriver().switchTo().frame(bannerIframe);
     }
 
-    public void closeBanner(){
+    public void closeBanner() {
         super.clickElement(closeBannerBtn);
     }
 
@@ -113,56 +119,72 @@ public class HomePage extends BasePage {
         return singUpBtnLoginIframe.isDisplayed();
     }
 
-    public void fillUsernameEmailInput(String user){
+    public void fillUsernameEmailInput(String user) {
         super.typeOnInput(usernameOrEmailInput, user);
     }
 
-    public void fillPasswordInput(String password){
+    public void fillPasswordInput(String password) {
         super.typeOnInput(passwordInput, password);
     }
 
-    public void submitLoginForm(){
+    public void submitLoginForm() {
         super.clickElement(loginBtnSubmit);
     }
 
-    public void modalIsClosed(){
+    public void modalIsClosed() {
         super.waitForInvisibility(loginIframe);
     }
 
-    public WatchPage goToWatch(){
+    public WatchPage goToWatch() {
         super.clickElement(watchBtn);
         return new WatchPage(getDriver());
     }
 
-    public String welcomeTextValue(){
+    public String welcomeTextValue() {
         return welcomeText.getText();
     }
 
     //Logout Methods
-    public void clickLogoutBtn(){
+    public void clickLogoutBtn() {
         super.waitForVisibility(logoutBtn);
         super.clickElement(logoutBtn);
     }
 
-    public void userOptionsListMenuIsClosed(){
+    public void userOptionsListMenuIsClosed() {
         super.waitForInvisibility(userOptionsListMenu);
     }
 
+    public void isOpenUserOptionsList(){
+        super.waitForVisibility(userOptionsListMenu);
+    }
+
+
     //Deactivate User methods
-    public void clickESPNProfile(){
+    public void clickESPNProfile() {
         super.clickElement(espnProfileLink);
     }
 
-    public void clickDeleteAccount(){
+    public void clickDeleteAccount() {
+        deleteAccountLink.isDisplayed();
         super.clickElement(deleteAccountLink);
     }
 
-    public void clickDeleteAccountConfirmation(){
+    public boolean deleteAccountIsDisplayed() {
+        super.waitForVisibility(deleteAccountLink);
+        return deleteAccountLink.isDisplayed();
+    }
+
+    public void clickDeleteAccountConfirmation() {
         super.clickElement(loginBtnSubmit);
     }
 
-    public void loadingSpinnerIsOver(){
+    public void switchToUpdateAccountModal() {
+        super.getDriver().switchTo().frame(UpdateAccountModal);
+    }
+
+    public void waitForSpinner(){
         super.waitForInvisibility(loadingSpinner);
     }
+
 
 }

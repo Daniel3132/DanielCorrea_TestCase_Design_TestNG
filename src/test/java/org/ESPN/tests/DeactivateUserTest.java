@@ -2,31 +2,26 @@ package org.ESPN.tests;
 
 import org.testng.annotations.Test;
 
+import static org.hamcrest.Matchers.is;
+
 public class DeactivateUserTest extends BaseTest {
 
-    private final String EMAIL = "utyd_qarri3@kygur.com";
-    private final String PASSWORD = "hGWKrb7*ZU2Y,_.";
-
     @Test
-    public void deactivateUserTest() {
-        home.switchToBanner();
-        home.closeBanner();
-        home.switchToHome();
-        home.openLoginModal();
-        home.switchToModal();
-        home.fillUsernameEmailInput(EMAIL);
-        home.fillPasswordInput(PASSWORD);
-        home.submitLoginForm();
-        home.switchToHome();
+    public void deactivateUserTest() throws InterruptedException {
+        fastLogin();
         home.modalIsClosed();
+
         home.mouseOverUserIcon();
+        home.isOpenUserOptionsList();
         home.clickESPNProfile();
-        home.switchToModal();
-        home.loadingSpinnerIsOver();
+        home.waitForSpinner();
+        home.switchToUpdateAccountModal();
         home.clickDeleteAccount();
         home.clickDeleteAccountConfirmation();
         home.switchToHome();
-
-
+        fastLogin();
+        home.userOptionsListMenuIsClosed();
+        home.mouseOverUserIcon();
+        checkThat("Welcome text is correct", home.welcomeTextValue(), is("Welcome!"));
     }
 }
