@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 public class LoginTest extends BaseTest {
 
-    private final String EMAIL = "utyd_qarri8@kygur.com";
+    private final String EMAIL = "utyd_qarri3@kygur.com";
     private final String USERNAME = "Daniel";
     private final String PASSWORD = "hGWKrb7*ZU2Y,_.";
     private final String EXPECTED_WELCOME_TEXT = "Welcome" + USERNAME + "!";
