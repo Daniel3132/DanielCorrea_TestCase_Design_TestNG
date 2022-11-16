@@ -30,6 +30,12 @@ public class LoginTest extends BaseTest {
         home.switchToHome();
         home.modalIsClosed();
         watchPageValidation();
+        home.mouseOverUserIcon();
+        checkThat("Welcome text is correct", home.welcomeTextValue(), is(EXPECTED_WELCOME_TEXT));
+        home.clickLogoutBtn();
+        home.userOptionsListMenuIsClosed();
+        home.mouseOverUserIcon();
+        checkThat("Welcome text is correct", home.welcomeTextValue(), is("Welcome!"));
     }
 
     public void watchPageValidation() {
@@ -40,11 +46,5 @@ public class LoginTest extends BaseTest {
         checkThat("Close button is visible", watchPage.closeBtnModalIsDisplayed(), is(true));
         watchPage.closeCardModal();
         watchPage.backHome();
-        home.mouseOverUserIcon();
-        checkThat("Welcome text is correct", home.welcomeTextValue(), is(EXPECTED_WELCOME_TEXT));
-        home.clickLogoutBtn();
-        home.modalIsClosed();
-        home.mouseOverUserIcon();
-        checkThat("Welcome text is correct", home.welcomeTextValue(), is("Welcome!"));
     }
 }

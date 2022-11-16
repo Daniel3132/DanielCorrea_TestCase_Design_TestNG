@@ -45,8 +45,11 @@ public class HomePage extends BasePage {
     @FindBy(css = "li.user > div > div > ul.account-management > li:nth-child(9) > a")
     private WebElement logoutBtn;
 
-    @FindBy(css = " li.pillar.watch > a > span > span.link-text")
+    @FindBy(css = "li.pillar.watch > a > span > span.link-text")
     private WebElement watchBtn;
+
+    @FindBy(css = "div.global-user:nth-child(2)")
+    private WebElement userOptionsListMenu;
 
     //Deactivate User Elements
 
@@ -128,9 +131,13 @@ public class HomePage extends BasePage {
 
     //Logout Methods
     public void clickLogoutBtn(){
+        super.waitForVisibility(logoutBtn);
         super.clickElement(logoutBtn);
     }
 
+    public void userOptionsListMenuIsClosed(){
+        super.waitForInvisibility(userOptionsListMenu);
+    }
 
 
 }
