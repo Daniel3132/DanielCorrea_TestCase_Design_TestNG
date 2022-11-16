@@ -5,6 +5,7 @@ import org.ESPN.pages.HomePage;
 import org.ESPN.reporting.Reporter;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -14,12 +15,15 @@ import static java.lang.String.format;
 
 public class BaseTest {
 
+    protected final String EMAIL = "utyd_qarri@kygur.com";
+    protected final String PASSWORD = "hGWKrb7*ZU2Y,_.";
     protected HomePage home;
     private Driver driver;
 
-    protected final String EMAIL = "utyd_qarri3@kygur.com";
-    protected final String PASSWORD = "hGWKrb7*ZU2Y,_.";
-
+    public void scrollToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver.getDriver();
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 
     @Parameters({"browser", "url"})
     @BeforeTest
@@ -47,7 +51,7 @@ public class BaseTest {
         }
     }
 
-    protected void fastLogin(){
+    protected void fastLogin() {
         home.switchToBanner();
         home.closeBanner();
         home.switchToHome();

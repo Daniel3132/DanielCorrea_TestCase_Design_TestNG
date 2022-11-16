@@ -51,7 +51,7 @@ public class WebOperations {
         new Actions(getDriver()).moveToElement(element).perform();
     }
 
-    public void refreshed(WebElement element){
+    public void refreshed(WebElement element) {
         this.wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
     }
 }

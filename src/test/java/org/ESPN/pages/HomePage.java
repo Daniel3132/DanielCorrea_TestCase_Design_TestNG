@@ -67,6 +67,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".loading-indicator")
     private WebElement loadingSpinner;
 
+    @FindBy(css = ".account-deleted-gating + #Title")
+    private WebElement deleteAccountText;
+
 
     //Methods
     public HomePage(WebDriver driver) {
@@ -154,24 +157,20 @@ public class HomePage extends BasePage {
         super.waitForInvisibility(userOptionsListMenu);
     }
 
-    public void isOpenUserOptionsList(){
+    public void isOpenUserOptionsList() {
         super.waitForVisibility(userOptionsListMenu);
     }
 
 
     //Deactivate User methods
     public void clickESPNProfile() {
+        super.waitForVisibility(espnProfileLink);
         super.clickElement(espnProfileLink);
     }
 
     public void clickDeleteAccount() {
-        deleteAccountLink.isDisplayed();
-        super.clickElement(deleteAccountLink);
-    }
-
-    public boolean deleteAccountIsDisplayed() {
         super.waitForVisibility(deleteAccountLink);
-        return deleteAccountLink.isDisplayed();
+        super.clickElement(deleteAccountLink);
     }
 
     public void clickDeleteAccountConfirmation() {
@@ -182,9 +181,12 @@ public class HomePage extends BasePage {
         super.getDriver().switchTo().frame(UpdateAccountModal);
     }
 
-    public void waitForSpinner(){
+    public void waitForSpinner() {
         super.waitForInvisibility(loadingSpinner);
     }
 
+    public String failedLoginAttempt() {
+        return deleteAccountText.getText();
+    }
 
 }

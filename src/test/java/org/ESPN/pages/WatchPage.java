@@ -29,14 +29,14 @@ public class WatchPage extends BasePage {
         return cardsList.get(1).findElements(By.cssSelector("ul.Carousel__Inner li"));
     }
 
-    public boolean checkElementInCard(WebElement element, String selector){
+    public boolean checkElementInCard(WebElement element, String selector) {
         return !element.findElement(By.cssSelector(selector)).getText().equals("");
     }
 
     public boolean checkAllCardsTitle() {
         List<Boolean> titlesCheckedList = new ArrayList<>();
         for (int i = 0; i < getCards().size(); i++) {
-            titlesCheckedList.add(checkElementInCard(getCards().get(i),"h2.WatchTile__Title" ));
+            titlesCheckedList.add(checkElementInCard(getCards().get(i), "h2.WatchTile__Title"));
         }
         return !titlesCheckedList.contains(false);
     }
@@ -44,7 +44,7 @@ public class WatchPage extends BasePage {
     public boolean checkAllCardsDescription() {
         List<Boolean> descriptionsCheckedList = new ArrayList<>();
         for (int i = 0; i < getCards().size(); i++) {
-            descriptionsCheckedList.add(checkElementInCard(getCards().get(i),".WatchTile__Meta" ));
+            descriptionsCheckedList.add(checkElementInCard(getCards().get(i), ".WatchTile__Meta"));
         }
         return !descriptionsCheckedList.contains(false);
     }

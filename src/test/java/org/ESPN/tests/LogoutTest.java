@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import static org.hamcrest.Matchers.is;
 
-public class LogoutTest extends BaseTest{
+public class LogoutTest extends BaseTest {
     @Test
     public void logout() {
         fastLogin();
