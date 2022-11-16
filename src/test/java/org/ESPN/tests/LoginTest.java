@@ -9,7 +9,9 @@ import static org.hamcrest.Matchers.is;
 public class LoginTest extends BaseTest {
 
     private final String EMAIL = "utyd_qarri83@kygur.com";
+    private final String USERNAME = "Daniel";
     private final String PASSWORD = "hGWKrb7*ZU2Y,_.";
+    private final String EXPECTED_WELCOME_TEXT = "Welcome" + USERNAME + "!";
 
     @Test
     public void loginTest() {
@@ -30,7 +32,7 @@ public class LoginTest extends BaseTest {
         watchPageValidation();
     }
 
-    public void watchPageValidation(){
+    public void watchPageValidation() {
         WatchPage watchPage = home.goToWatch();
         checkThat("All cards in the second carousel have a title", watchPage.checkAllCardsTitle(), is(true));
         checkThat("All cards in the second carousel have a description", watchPage.checkAllCardsDescription(), is(true));
@@ -38,5 +40,11 @@ public class LoginTest extends BaseTest {
         checkThat("Close button is visible", watchPage.closeBtnModalIsDisplayed(), is(true));
         watchPage.closeCardModal();
         watchPage.backHome();
+        home.mouseOverUserIcon();
+        checkThat("Welcome text is correct", home.welcomeTextValue(), is(EXPECTED_WELCOME_TEXT));
+        home.clickLogoutBtn();
+        home.modalIsClosed();
+        home.mouseOverUserIcon();
+        checkThat("Welcome text is correct", home.welcomeTextValue(), is("Welcome!"));
     }
 }

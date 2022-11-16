@@ -2,6 +2,7 @@ package org.ESPN.configuration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -43,5 +44,10 @@ public class WebOperations {
 
     public void waitForInvisibility(WebElement element) {
         this.wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public void mouseOver(WebElement element) {
+        this.waitForVisibility(element);
+        new Actions(getDriver()).moveToElement(element).perform();
     }
 }

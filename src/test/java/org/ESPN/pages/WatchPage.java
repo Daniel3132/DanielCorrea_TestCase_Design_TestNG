@@ -29,20 +29,24 @@ public class WatchPage extends BasePage {
         return cardsList.get(1).findElements(By.cssSelector("ul.Carousel__Inner li"));
     }
 
+    public boolean checkElementInCard(WebElement element, String selector){
+        return element.findElement(By.cssSelector(selector)).isDisplayed() && !element.findElement(By.cssSelector(selector)).getText().equals("");
+    }
+
     public boolean checkAllCardsTitle() {
-        List<Boolean> isTitle = new ArrayList<>();
-        getCards().forEach(element -> {
-            isTitle.add(element.findElement(By.cssSelector("h2.WatchTile__Title")).isDisplayed() && !element.findElement(By.cssSelector("h2.WatchTile__Title")).getText().equals(""));
-        });
-        return !isTitle.contains(false);
+        List<Boolean> titlesCheckedList = new ArrayList<>();
+        for (int i = 0; i < getCards().size(); i++) {
+            titlesCheckedList.add(checkElementInCard(getCards().get(i),"h2.WatchTile__Title" ));
+        }
+        return !titlesCheckedList.contains(false);
     }
 
     public boolean checkAllCardsDescription() {
-        List<Boolean> isDescription = new ArrayList<>();
-        getCards().forEach(element -> {
-            isDescription.add(element.findElement(By.cssSelector(".WatchTile__Meta")).isDisplayed() && !element.findElement(By.cssSelector(".WatchTile__Meta")).getText().equals(""));
-        });
-        return !isDescription.contains(false);
+        List<Boolean> descriptionsCheckedList = new ArrayList<>();
+        for (int i = 0; i < getCards().size(); i++) {
+            descriptionsCheckedList.add(checkElementInCard(getCards().get(i),".WatchTile__Meta" ));
+        }
+        return !descriptionsCheckedList.contains(false);
     }
 
     public void clickSecondCard() {
@@ -60,6 +64,5 @@ public class WatchPage extends BasePage {
 
     public void backHome() {
         super.getDriver().navigate().back();
-        new HomePage(getDriver());
     }
 }

@@ -14,14 +14,14 @@ public class HomePage extends BasePage {
     private WebElement closeBannerBtn;
 
     //Login Elements
+    @FindBy(id = "global-user-trigger")
+    private WebElement IconUserToHover;
+
     @FindBy(css = "#sideLogin-left-rail > button.button-alt.med")
     private WebElement loginBtnHomePage;
 
     @FindBy(id = "oneid-iframe")
     private WebElement loginIframe;
-
-    @FindBy(css = "#root > div:nth-child(3) > div > div > div:nth-child(1)")
-    private WebElement modalLogin;
 
     @FindBy(id = "logo")
     private WebElement espnLogoLoginIframe;
@@ -38,12 +38,12 @@ public class HomePage extends BasePage {
     @FindBy(id = "BtnCreateAccount")
     private WebElement singUpBtnLoginIframe;
 
+    @FindBy(css = "ul > li.user.hover > div > div > ul.account-management > li.display-user")
+    private WebElement welcomeText;
+
     //Logout Elements
     @FindBy(css = "li.user > div > div > ul.account-management > li:nth-child(9) > a")
     private WebElement logoutBtn;
-
-    @FindBy(css = "ul > li.user.hover > div > div > ul.account-management > li.display-user")
-    private WebElement welcomeText;
 
     @FindBy(css = " li.pillar.watch > a > span > span.link-text")
     private WebElement watchBtn;
@@ -55,10 +55,15 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    public void mouseOverUserIcon() {
+        super.mouseOver(this.IconUserToHover);
+    }
+
     //Ad Banner
     public void switchToBanner(){
         super.getDriver().switchTo().frame(bannerIframe);
     }
+
     public void closeBanner(){
         super.clickElement(closeBannerBtn);
     }
@@ -108,19 +113,24 @@ public class HomePage extends BasePage {
         super.clickElement(loginBtnSubmit);
     }
 
+    public void modalIsClosed(){
+        super.waitForInvisibility(loginIframe);
+    }
+
     public WatchPage goToWatch(){
         super.clickElement(watchBtn);
         return new WatchPage(getDriver());
     }
 
-    public boolean watchBtnIsDisplayed(){
-        super.waitForVisibility(watchBtn);
-        return watchBtn.isDisplayed();
+    public String welcomeTextValue(){
+        return welcomeText.getText();
     }
 
-    public void modalIsClosed(){
-        super.waitForInvisibility(loginIframe);
+    //Logout Methods
+    public void clickLogoutBtn(){
+        super.clickElement(logoutBtn);
     }
+
 
 
 }
