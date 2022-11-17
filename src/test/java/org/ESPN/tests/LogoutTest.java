@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.is;
 public class LogoutTest extends BaseTest {
     @Test
     public void logout() {
+//        Navigation navigation = new Navigation();
+//        navigation.fastLogin();
         fastLogin();
         home.modalIsClosed();
         home.mouseOverUserIcon();

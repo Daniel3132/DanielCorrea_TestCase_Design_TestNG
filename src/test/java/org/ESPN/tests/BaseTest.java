@@ -15,7 +15,7 @@ import static java.lang.String.format;
 
 public class BaseTest {
 
-    protected final String EMAIL = "utyd_qarri@kygur.com";
+    protected final String EMAIL = "utyd_qarr@kygur.com";
     protected final String PASSWORD = "hGWKrb7*ZU2Y,_.";
     protected HomePage home;
     private Driver driver;

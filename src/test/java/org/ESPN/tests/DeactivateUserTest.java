@@ -1,14 +1,15 @@
 package org.ESPN.tests;
 
 import org.testng.annotations.Test;
-
 import static org.hamcrest.Matchers.is;
 
 
 public class DeactivateUserTest extends BaseTest {
 
     @Test
-    public void deactivateUserTest() throws InterruptedException {
+    public void deactivateUserTest() {
+//        Navigation navigation = new Navigation();
+//        navigation.fastLogin();
         fastLogin();
         home.modalIsClosed();
         home.mouseOverUserIcon();

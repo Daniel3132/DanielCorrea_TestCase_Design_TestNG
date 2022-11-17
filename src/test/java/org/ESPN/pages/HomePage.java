@@ -47,7 +47,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "li.user > div > div > ul.account-management > li:nth-child(9) > a")
     private WebElement logoutBtn;
 
-    @FindBy(css = "li.pillar.watch > a > span > span.link-text")
+    @FindBy(linkText = "Watch")
     private WebElement watchBtn;
 
     @FindBy(css = "div.global-user:nth-child(2)")

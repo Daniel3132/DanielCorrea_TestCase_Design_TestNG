@@ -6,12 +6,22 @@
     </listeners>
 
     <parameter name="url" value="https://www.espnqa.com/?src=com&amp;_adblock=true&amp;espn=cloud"/>
+    <parameter name="browser" value="firefox"/>
 
     <test name="Login test">
-        <parameter name="browser" value="firefox"/>
         <classes>
-            <!--<class name="org.ESPN.tests.LoginTest"/>-->
-            <!--<class name="org.ESPN.tests.LogoutTest"/>-->
+            <class name="org.ESPN.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Logout test">
+        <classes>
+            <class name="org.ESPN.tests.LogoutTest"/>
+        </classes>
+    </test>
+
+    <test name="Deactivate User test">
+        <classes>
             <class name="org.ESPN.tests.DeactivateUserTest"/>
         </classes>
     </test>

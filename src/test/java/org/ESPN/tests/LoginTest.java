@@ -22,8 +22,8 @@ public class LoginTest extends BaseTest {
         checkThat("ESPN logo is displayed", home.ESPNLogoIsDisplayed(), is(true));
         checkThat("Login button is displayed", home.loginBtnIsDisplayed(), is(true));
         checkThat("SignUp button is displayed", home.signUpBtnIsDisplayed(), is(true));
-        home.fillUsernameEmailInput(this.EMAIL);
-        home.fillPasswordInput(this.PASSWORD);
+        home.fillUsernameEmailInput(EMAIL);
+        home.fillPasswordInput(PASSWORD);
         home.submitLoginForm();
         home.switchToHome();
         home.modalIsClosed();
