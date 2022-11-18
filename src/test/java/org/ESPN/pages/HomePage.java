@@ -170,6 +170,7 @@ public class HomePage extends BasePage {
 
     public void clickDeleteAccount() {
         super.waitForVisibility(deleteAccountLink);
+        super.waitForClickable(deleteAccountLink);
         super.clickElement(deleteAccountLink);
     }
 
